@@ -1,7 +1,11 @@
 <script>
+	import { uuid2 } from "@/utils/common.js";
 	export default {
-		onLaunch: function() {
+		onLaunch: async function() {
+			console.log('onLaunch')
 			this.getAd()
+			let uid = await uuid2()
+			uni.setStorageSync("uid", uid)
 		},
 		onShow: function() {
 			console.log('App Show')
@@ -11,21 +15,22 @@
 		},
 		methods:{
 			async getAd() {
-				const {
-					data
-				} = await uni.$u.http.post('/app/ad/info/list', {
-					"position": this.adPosition,
-				}, {
-					timeout: 300000
-				})
-				uni.hideLoading()
-				if (data.code != 1000) {
-					uni.showToast({
-						title: data.message,
-						icon: 'none'
-					})
-				}
-				uni.setStorageSync('ad', data.data)
+				// const {
+				// 	data
+				// } = await uni.$u.http.post('/app/ad/info/list', {
+				// 	"position": this.adPosition,
+				// }, {
+				// 	timeout: 300000
+				// })
+				// uni.hideLoading()
+				// if (data.code != 1000) {
+				// 	uni.showToast({
+				// 		title: data.message,
+				// 		icon: 'none'
+				// 	})
+				// }
+				// uni.setStorageSync('ad', data.data)
+				uni.setStorageSync('ad', {})
 			}
 		}
 	}

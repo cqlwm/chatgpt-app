@@ -12,20 +12,21 @@
 						<view class="tips" @tap="show = true">切换自有KEY</view>
 					</view>
 					<view class="textarea">
-						<u--textarea height="140" v-model="problem" placeholder="支持长按粘贴您的问题" confirm-type="send"></u--textarea>
+						<u--textarea height="140" v-model="qaObj.prompt" placeholder="支持长按粘贴您的问题" confirm-type="send"></u--textarea>
 					</view>
 					<view class="btn-group">
 						<view class="btn paste" @tap="next">
-							<u-button icon="file-text" text="清除记忆"></u-button>
+							<u-button icon="file-text" text="清除缓存"></u-button>
 						</view>
 						<view class="btn get">
-							<u-button iconColor="#ffffff" color="#26B3A0" icon="edit-pen" text="获取问题答案"
-								@tap="getAnswer"></u-button>
+							<u-button iconColor="#ffffff" color="#26B3A0" icon="edit-pen" text="获取问题答案" @tap="getQaAnswer"></u-button>
 						</view>
 					</view>
 				</view>
 			</u-transition>
-			<mp-html :content="item.desc" v-for="item in ad('5')" :key="item.id"></mp-html>
+			<view class="content" style="padding: 20rpx;">
+				<mp-html :content="item.desc" v-for="item in ad('1')" :key="item.id"></mp-html>
+			</view>
 			<u-transition :show="true" mode="fade-left">
 				<view class="panel">
 					<view class="head">
@@ -33,7 +34,7 @@
 						<view class="tips"></view>
 					</view>
 					<view class="textarea">
-						<u--textarea height="140" :value="answer" placeholder="支持可复制您的答案" confirm-type="send"></u--textarea>
+						<u--textarea height="140" :value="qaObj.answer" placeholder="支持可复制您的答案" confirm-type="send"></u--textarea>
 					</view>
 					<view class="btn-group">
 						<view class="btn get" style="width:100%">
@@ -43,10 +44,6 @@
 					</view>
 				</view>
 			</u-transition>
-
-		</view>
-		<view class="content" style="padding: 20rpx;">
-			<mp-html :content="item.desc" v-for="item in ad('1')" :key="item.id"></mp-html>
 		</view>
 		<u-popup :show="show" :round="10" mode="bottom" :closeable="true" @close="show=false">
 			<view style="padding:20rpx">
@@ -68,6 +65,8 @@
 
 			</view>
 		</u-popup>
+		
+		<!-- 
 		<view class="tool">
 			<view class="header">
 				<view class="title">功能特性</view>
@@ -132,7 +131,7 @@
 			</u-transition>
 		</view>
 
-		<!-- <view class="share">
+		<view class="share">
 			<u-button shape="circle" color="#26B3A0" :plain="true" icon="share" text="推荐给朋友"></u-button>
 		</view> -->
 	</view>
@@ -148,6 +147,11 @@
 				adPosition: "1"
 			};
 		},
+		methods: {
+			qa() {
+				
+			}
+		}
 	}
 </script>
 

@@ -4,6 +4,15 @@
 		<view class="form">
 			<view class="panel" v-for="item in ad('3')" :key="item.id">
 				<view class="head">
+					<view class="title">UUID:123456789</view>
+				</view>
+				<view class="content">
+					<mp-html content="_KEY: 使用内置 ChatGPT Access Key 速度较慢, 提问或对话需要排队。"></mp-html>
+				</view>
+				<view class="bottom">免费版</view>
+			</view>
+			<view class="panel" v-for="item in ad('3')" :key="item.id">
+				<view class="head">
 					<view class="title">{{item.title}}</view>
 				</view>
 				<view class="content">
